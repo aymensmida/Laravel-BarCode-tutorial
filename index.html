@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate BarCode in Laravel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+        integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lustria&amp;family=PT+Sans+Narrow:wght@400;700&amp;display=swap"
+        rel="stylesheet">
+</head>
+<link rel="stylesheet" href="./css/style.css">
+
+<body>
+    <div class="container-fluid">
+        <div class="row border mt-2 ml-1 mr-1 d-flex align-items-center shadow">
+            <div class="col-md-3 p-2 text-left">
+                <img src="./images/header-l8.png" height="80px">
+
+            </div>
+            <div class="col-md-6 text-center">
+                <h2 class=" first-title">Generate BarCode in Laravel </h2>
+            </div>
+            <div class="col-md-3 p-2 text-right">
+                <img src="./images/header.png" alt="" height="80px">
+
+            </div>
+
+        </div>
+        <div class="row mt-5 mb-2 ml-md-5 mr-md-5">
+            <div class="col-lg-12">
+                <p>A barcode is a machine-readable representation of data that is typically used to store and retrieve
+                    information about products, packages, or other objects. Barcodes are made up of a series of lines or
+                    other patterns that can be read by a barcode scanner or a smartphone camera.
+                </p>
+                <h2 class="Title">I-Install Laravel 8</h2>
+
+
+            </div>
+
+        </div>
+        <div class="row ml-md-5 mr-md-5">
+            <div class="col-lg-12">
+                <p>Open terminal further run below command to manifest a new laravel project, ignore this step if
+                    project is already installed</p>
+            </div>
+            <div class="col-lg-8">
+
+                <div class="cmd  " id="cmd-1">
+                    <pre
+                        class="pre-cmd d-flex align-items-center pl-2">composer create-project laravel/laravel:^8.0 laravel-BarCode</pre>
+                    <button class="btn-copy" data-toggle="tooltip" data-placement="top" title=""
+                        onclick="CopyToClipboard('cmd-1')" data-original-title="Copy to Clipboard">
+                        <i class="fa fa-clipboard"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-2 mb-2 ml-md-5 mr-md-5">
+            <div class="col-lg-12">
+
+                <h2 class="Title"> II- "BarCode" package</h2>
+                <p>Now we require to install <span style="color:rgb(255, 78, 2)">picqer/php-barcode-generator</span>
+                    package for the barcode generator
+                </p>
+
+            </div>
+
+        </div>
+        <div class="row ml-md-5 mr-md-5">
+
+            <div class="col-lg-8">
+
+                <div class="cmd  " id="cmd-2">
+                    <pre
+                        class="pre-cmd d-flex align-items-center pl-2">composer require picqer/php-barcode-generator</pre>
+                    <button class="btn-copy" data-toggle="tooltip" data-placement="top" title=""
+                        onclick="CopyToClipboard('cmd-2')" data-original-title="Copy to Clipboard">
+                        <i class="fa fa-clipboard"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-2 mb-3 ml-md-5 mr-md-5">
+            <div class="col-md-11">
+
+                <h2 class="Title">III-Create Routes</h2>
+                <p>Open the <span class="text-danger font-weight-bold"> routes/web.php </span>file and define the
+                    following route:</p>
+
+
+            </div>
+            <div class="col-md-10">
+                <div class="cmd  " id="cmd-3">
+                    <pre class="pre-cmd  align-items-center pl-2">                        &lt;?php
+
+                        use Illuminate\Support\Facades\Route;
+                         <span class="text-success">
+                            /*
+                        |--------------------------------------------------------------------------
+                        | Web Routes
+                        |--------------------------------------------------------------------------
+                        
+                        */</span>
+                        
+                        Route::get('BarCode', [App\Http\Controllers\BarCodeController::class, 'generate'])->name('generateBC');
+
+                        </pre>
+                    <button class="btn-copy" data-toggle="tooltip" data-placement="top" title=""
+                        onclick="CopyToClipboard('cmd-3')" data-original-title="Copy to Clipboard">
+                        <i class="fa fa-clipboard"></i>
+                    </button>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+        <div class="row mt-2 mb-3 ml-md-5 mr-md-5">
+            <div class="col-md-11">
+
+                <h2 class="Title">IV-Generate BarCodeController</h2>
+
+
+
+            </div>
+            <div class="col-lg-8">
+
+                <div class="cmd  " id="cmd-21">
+                    <pre
+                        class="pre-cmd d-flex align-items-center pl-2">php artisan make:Controller BarCodeController</pre>
+                    <button class="btn-copy" data-toggle="tooltip" data-placement="top" title=""
+                        onclick="CopyToClipboard('cmd-21')" data-original-title="Copy to Clipboard">
+                        <i class="fa fa-clipboard"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="cmd  " id="cmd-4">
+                    <pre class="pre-cmd  align-items-center pl-2">                        &lt;?php
+
+
+                        namespace App\Http\Controllers;
+                        
+                        use Illuminate\Http\Request;
+                        
+                     <span class="text-primary">use Picqer\Barcode\BarcodeGeneratorPNG;</span>   
+                     <span class="text-primary">use Picqer\Barcode\BarcodeGeneratorHTML;</span>   
+                        
+                        class BarCodeController extends Controller
+                        {
+                            public function generate () {
+                                $generator=new BarcodeGeneratorHTML();
+                                $generatorPNG=new BarcodeGeneratorPNG();
+                                
+                
+                                 return view("welcome", compact('generator','generatorPNG'));
+                             }
+                        }
+                        
+
+                        </pre>
+                    <button class="btn-copy" data-toggle="tooltip" data-placement="top" title=""
+                        onclick="CopyToClipboard('cmd-4')" data-original-title="Copy to Clipboard">
+                        <i class="fa fa-clipboard"></i>
+                    </button>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+        <div class="row mt-2 mb-3 ml-md-5 mr-md-5">
+            <div class="col-md-11">
+
+                <h2 class="Title">V-Show generated BarCode</h2>
+
+                <p>Now open the welcome file <span class="text-primary">resources/views/welcome.blade.php</span> and add
+                    the code given below</p>
+
+            </div>
+            <div class="col-md-12">
+                <div class="cmd  " id="cmd-5">
+                    <pre class="pre-cmd  align-items-center pl-2">
+
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="{{ str_replace('_', '-', app()-&gt;getLocale()) }}"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;Generate a QR code with Laravel&lt;/title&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row text-center border mt-2 ml-1 mr-1 py-3 shadow"&gt;
+            &lt;h1 class="text-primary  font-weight-bold "&gt;Generate BarCode in Laravel &lt;/h1&gt;
+        &lt;/div&gt;
+        &lt;div class="row mt-5"&gt;
+            &lt;div class="col-lg-6 p-1"&gt;
+                &lt;div class="card text-center text-center"&gt;
+                    &lt;div class="card-header bg-primary text-white"&gt;
+                     use BarcodeGeneratorHTML()
+                    &lt;/div&gt;
+                    &lt;div class="card-body text-center mx-auto"&gt;
+
+                        {!! $generator-&gt;getBarcode('2161245259636', $generator::TYPE_CODE_128) !!}
+                        2161245259636
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-6 p-1"&gt;
+                &lt;div class="card text-center"&gt;
+                    &lt;div class="card-header bg-primary text-white"&gt;
+                      use  BarcodeGeneratorPNG()
+                    &lt;/div&gt;
+                    &lt;div class="card-body"&gt;
+                        &lt;img src="data:image/png;base64,{{ base64_encode($generatorPNG-&gt;getBarcode('2161242259636', $generatorPNG::TYPE_CODE_128)) }}"&gt;
+                        &lt;br&gt;
+                        2161242259636
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+                        </pre>
+                    <button class="btn-copy" data-toggle="tooltip" data-placement="top" title=""
+                        onclick="CopyToClipboard('cmd-5')" data-original-title="Copy to Clipboard">
+                        <i class="fa fa-clipboard"></i>
+                    </button>
+                </div>
+
+                <p>Now you have to run the application using this command</p>
+
+            </div>
+
+            <div class="col-lg-6">
+                <div class="cmd " id="cmd-23">
+                    <pre class="pre-cmd d-flex align-items-center pl-2">php artisan serve</pre>
+                    <button class="btn-copy" data-toggle="tooltip" data-placement="top" title=""
+                        onclick="CopyToClipboard('cmd-23')" data-original-title="Copy to Clipboard">
+                        <i class="fa fa-clipboard"></i>
+                    </button>
+                </div>
+
+            </div>
+            <p> Finaly,open the below URL on your browser <a href="http://localhost:8000/BarCode"
+                    target="_blank">http://localhost:8000/BarCode</a></p>
+
+            <div class="py-4 px-3 alert-success shadow">
+                <h5>You can download code from git: <a target="_blank"
+                        href="https://github.com/aymensmida/Laravel-Bar-Code">https://github.com/aymensmida/Laravel-Bar-Code</a>
+                </h5>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+    crossorigin="anonymous"></script>
+<script src="./Js/app.js"></script>
+
+</html>
